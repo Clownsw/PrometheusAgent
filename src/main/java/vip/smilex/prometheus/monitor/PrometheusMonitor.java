@@ -1,11 +1,16 @@
 package vip.smilex.prometheus.monitor;
 
+import io.github.mweirauch.micrometer.jvm.extras.ProcessMemoryMetrics;
 import io.micrometer.core.instrument.binder.jvm.*;
+import io.micrometer.core.instrument.binder.logging.LogbackMetrics;
+import io.micrometer.core.instrument.binder.system.DiskSpaceMetrics;
 import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics;
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
 import io.micrometer.core.instrument.binder.system.UptimeMetrics;
 import io.micrometer.prometheus.PrometheusConfig;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
+
+import java.io.File;
 
 /**
  * 普罗米修斯监控
@@ -29,6 +34,9 @@ public final class PrometheusMonitor {
     private static final JvmGcMetrics JVM_GC_METRICS = new JvmGcMetrics();
     private static final JvmInfoMetrics JVM_INFO_METRICS = new JvmInfoMetrics();
     private static final JvmThreadMetrics JVM_THREAD_METRICS = new JvmThreadMetrics();
+    private static final LogbackMetrics LOGBACK_METRICS = new LogbackMetrics();
+    private static final DiskSpaceMetrics DISK_SPACE_METRICS = new DiskSpaceMetrics(new File("/"));
+    private static final ProcessMemoryMetrics PROCESS_MEMORY_METRICS = new ProcessMemoryMetrics();
 
     static {
         UPTIME_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
@@ -41,6 +49,9 @@ public final class PrometheusMonitor {
         JVM_GC_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
         JVM_INFO_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
         JVM_THREAD_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
+        LOGBACK_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
+        DISK_SPACE_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
+        PROCESS_MEMORY_METRICS.bindTo(PROMETHEUS_METER_REGISTRY);
     }
 
     public static String scrape() {
