@@ -27,8 +27,8 @@
               <transformers>
                 <transformer>
                   <manifestEntries>
-                    <Main-Class>vip.smilex.prometheus.monitor.AgentMain</Main-Class>
-                    <Premain-Class>vip.smilex.prometheus.monitor.AgentMain</Premain-Class>
+                    <Main-Class>com.sansan.prometheus.monitor.AgentMain</Main-Class>
+                    <Premain-Class>com.sansan.prometheus.monitor.AgentMain</Premain-Class>
                   </manifestEntries>
                 </transformer>
               </transformers>
@@ -40,6 +40,7 @@
   </build>
   <properties>
     <micrometer-jvm-extras.version>0.2.2</micrometer-jvm-extras.version>
+    <slf4j-api.version>2.0.9</slf4j-api.version>
     <micrometer.version>1.10.5</micrometer.version>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>

@@ -11,12 +11,12 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <slf4j-api.version>2.0.9</slf4j-api.version>
         <micrometer.version>1.10.5</micrometer.version>
         <micrometer-jvm-extras.version>0.2.2</micrometer-jvm-extras.version>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
@@ -56,8 +56,8 @@
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <manifestEntries>
-                                        <Main-Class>vip.smilex.prometheus.monitor.AgentMain</Main-Class>
-                                        <Premain-Class>vip.smilex.prometheus.monitor.AgentMain</Premain-Class>
+                                        <Main-Class>com.sansan.prometheus.monitor.AgentMain</Main-Class>
+                                        <Premain-Class>com.sansan.prometheus.monitor.AgentMain</Premain-Class>
                                     </manifestEntries>
                                 </transformer>
                             </transformers>

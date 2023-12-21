@@ -1,4 +1,4 @@
-package vip.smilex.prometheus.monitor;
+package com.sansan.prometheus.monitor;
 
 import io.github.mweirauch.micrometer.jvm.extras.ProcessMemoryMetrics;
 import io.micrometer.core.instrument.binder.jvm.*;
@@ -12,8 +12,8 @@ import io.micrometer.prometheus.PrometheusMeterRegistry;
 /**
  * 普罗米修斯监控
  *
- * @author smilex
- * @date 2023/4/2/10:53
+ * @author yanglujia
+ * @date 2023/12/20 18:30:08
  */
 @SuppressWarnings("unused")
 public final class PrometheusMonitor {
@@ -52,6 +52,7 @@ public final class PrometheusMonitor {
         } catch (Throwable ignore) {
         }
     }
+
 
     public static String scrape() {
         return PROMETHEUS_METER_REGISTRY.scrape();
